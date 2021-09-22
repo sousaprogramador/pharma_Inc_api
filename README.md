@@ -62,7 +62,6 @@ Após executar o projeto o mesmo poderá ser visualizado através da URL:
 `http://localhost:{PORT}/`
 
 Onde `{PORT}` é o valor da porta configurada no arquivo `.env`, por padrão é a 3333.
-Mais detalhes podem ser vistos na [Documentação da API](#Documentação-da-API).
 
 `http://localhost:{PORT}/docs`
 
