@@ -30,5 +30,5 @@ COPY --from=build /home/node/app/dist ./dist
 ENV NODE_ENV=production \
   PORT=3333
 
-#CMD ["node", "dist/main.js"]
-CMD ["sh","entrypoint.sh"]
+CMD ["node", "dist/main.js"]
+#CMD ["sh","entrypoint.sh"]
