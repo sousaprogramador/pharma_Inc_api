@@ -3,6 +3,8 @@
 Código criado para o desafio relacionado à vaga de Backend NodeJS na Coodesh.
 
 Repositório do Desafio: https://github.com/sousaprogramador/pharma_Inc_api
+
+&nbsp;
 Projeto realizado por Mateus Sousa da Silva [sousa.programador@gmail.com](mailto:sousa.programador@gmail.com)
 
 &nbsp;
