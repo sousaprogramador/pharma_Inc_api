@@ -1,73 +1,72 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Coodesh Much Tech Challenge
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Código criado para o desafio relacionado à vaga de Backend NodeJS na Coodesh.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Repositório do Desafio: https://github.com/sousaprogramador/pharma_Inc_api
 
-## Description
+&nbsp;
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Menu:
 
-## Installation
+- [Ferramentas Utilizadas](#ferramentas-utilizadas)
+- [Instalação](#instalação)
+- [Arquivo de configuração](#arquivo-de-configuração)
+- [Documentação da API](#documentação-da-api)
+
+&nbsp;
+
+## Ferramentas Utilizadas
+
+Para desenvolvimento desse aplicativo foram utilizadas as ferramentas à seguir:
+
+- NestJS (framework) utilizando Typescript
+- Swagger (documentação da api)
+- Lint e Prettier (formatação e qualidade do código)
+
+&nbsp;
+
+## Instalação
+
+Executar o comando para instalar as dependências
 
 ```bash
+$ yarn
+# ou
 $ npm install
 ```
 
-## Running the app
+&nbsp;
+
+## Arquivo de configuração
+
+Criar um arquivo `.env` baseado no arquivo `.env.example`, editando os valores que já existem, caso necessário, e inserindo os que estão vazios.
+
+&nbsp;
+
+## Executar a aplicação com Docker
+
+Executar o comando:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ docker-compose up -d 
 ```
 
-## Test
+OBS: esse comando inicializará a aplicação
 
-```bash
-# unit tests
-$ npm run test
+&nbsp;
 
-# e2e tests
-$ npm run test:e2e
+## Acesso ao projeto
 
-# test coverage
-$ npm run test:cov
-```
+Após executar o projeto o mesmo poderá ser visualizado através da URL:
 
-## Support
+`http://localhost:{PORT}/`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Onde `{PORT}` é o valor da porta configurada no arquivo `.env`, por padrão é a 3333.
+Mais detalhes podem ser vistos na [Documentação da API](#Documentação-da-API).
 
-## Stay in touch
+`http://localhost:{PORT}/docs`
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+&nbsp;
 
-## License
 
-Nest is [MIT licensed](LICENSE).
+
