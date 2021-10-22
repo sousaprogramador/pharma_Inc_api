@@ -4,14 +4,10 @@ import {
   Logger,
   NotFoundException,
 } from '@nestjs/common';
-import { Cron } from '@nestjs/schedule';
-import { ApiServicesService } from '../api-services/api-services.service';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User, UserDocument } from './entities/user.entity';
-import { Status } from './enum/status.enum';
-import { IUser } from './interfaces/user.interface';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
@@ -20,7 +16,6 @@ export class UsersService {
   constructor(
     @InjectModel(User.name)
     private readonly usersRepository: Model<UserDocument>,
-    private apiServicesService: ApiServicesService,
   ) {}
 
   private readonly logger = new Logger(UsersService.name);
@@ -100,7 +95,7 @@ export class UsersService {
     }
   }
 
-  @Cron('50 57 * * * *', {
+  /*@Cron('50 57 * * * *', {
     //
     timeZone: 'America/Araguaina',
   })
@@ -131,7 +126,7 @@ export class UsersService {
     Promise.all(urlsToFetch);
   }
 
-  async _cronFetchUsers(url: string): Promise<void> {
+  /*async _cronFetchUsers(url: string): Promise<void> {
     const users = await this._getUsers(url);
 
     users.map(async (user) => {
@@ -198,9 +193,9 @@ export class UsersService {
     });
   }
 
-  async _getUsers(url: string): Promise<IUser[]> {
+  /*async _getUsers(url: string): Promise<IUser[]> {
     // Use axios to fetch data from a specific URL usibg built-in HttpModule
-    const usersResponse = await this.apiServicesService.getHttpResponse(url);
+    /*const usersResponse = await this.apiServicesService.getHttpResponse(url);
 
     if (!usersResponse) {
       throw new BadRequestException(`Erro ao tentar selecionar da url: ${url}`);
@@ -212,5 +207,5 @@ export class UsersService {
     });
 
     return returnData;
-  }
+  }*/
 }

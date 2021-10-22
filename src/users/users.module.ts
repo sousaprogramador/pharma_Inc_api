@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { ApiServicesService } from 'src/api-services/api-services.service';
 import { User, UserSchema } from './entities/user.entity';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
@@ -14,7 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
     HttpModule,
   ],
   controllers: [UsersController],
-  providers: [UsersService, ApiServicesService],
+  providers: [UsersService],
   exports: [UsersService],
 })
 export class UsersModule {}

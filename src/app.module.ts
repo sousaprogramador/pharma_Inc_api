@@ -5,7 +5,6 @@ import { ScheduleModule } from '@nestjs/schedule';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { CommonModule } from './common/common.module';
-import { ApiServicesModule } from './api-services/api-services.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import appConfig from './config/app.config';
@@ -26,7 +25,6 @@ const uri =
     ScheduleModule.forRoot(),
     UsersModule,
     CommonModule,
-    ApiServicesModule,
     AuthModule,
   ],
   controllers: [AppController],
