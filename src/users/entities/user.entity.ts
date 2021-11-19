@@ -1,18 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-import { ApiProperty } from '@nestjs/swagger';
+import { Exclude, Transform } from 'class-transformer';
 import { Status } from '../enum/status.enum';
 
 export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-  @ApiProperty({
-    description: 'User UUID',
-    minimum: 1,
-    default: 1,
-  })
+  @Transform(({ obj }) => obj._id.toString(), { toClassOnly: true })
   @Prop()
   loginUuid: string;
 
@@ -65,6 +61,7 @@ export class User {
   loginUsername: string;
 
   @Prop()
+  @Exclude()
   loginPassword: string;
 
   @Prop()
