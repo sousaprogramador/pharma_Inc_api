@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-
 import { Exclude, Transform } from 'class-transformer';
 import { Status } from '../enum/status.enum';
 
