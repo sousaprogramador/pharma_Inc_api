@@ -21,7 +21,7 @@ import { IUserResponse } from './interfaces/user-response.interface';
 @Controller('users')
 export class UserController {
   constructor(
-    @Inject('usersService') private readonly userServiceClient: ClientProxy,
+    @Inject('USER_SERVICE') private readonly userServiceClient: ClientProxy,
   ) {}
 
   @Get()

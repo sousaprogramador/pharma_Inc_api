@@ -10,10 +10,10 @@ import { ConfigService } from './services/config/config.service';
   providers: [
     ConfigService,
     {
-      provide: 'TOKEN_SERVICE',
+      provide: 'USER_SERVICE',
       useFactory: (configService: ConfigService) => {
-        const tokenServiceOptions = configService.get('tokenService');
-        return ClientProxyFactory.create(tokenServiceOptions);
+        const userServiceOptions = configService.get('userService');
+        return ClientProxyFactory.create(userServiceOptions);
       },
       inject: [ConfigService],
     },
