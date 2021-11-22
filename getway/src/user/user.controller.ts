@@ -7,21 +7,22 @@ import {
   Param,
   Put,
   Query,
+  Inject,
 } from '@nestjs/common';
-import { ApiHeader, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { firstValueFrom } from 'rxjs';
+import { ClientProxy } from '@nestjs/microservices';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
-import { UsersService } from './users.service';
+import { IUserResponse } from './interfaces/user-response.interface';
 
-@ApiHeader({
-  name: 'apiKey',
-  description: 'Api secret to access protected content',
-})
 @ApiTags('users')
 @Controller('users')
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+export class UserController {
+  constructor(
+    @Inject('usersService') private readonly userServiceClient: ClientProxy,
+  ) {}
 
   @Get()
   @ApiResponse({
@@ -29,8 +30,12 @@ export class UsersController {
     description: 'Returns a list of users.',
   })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
-  async index(@Query() paginationQuery: PaginationQueryDto): Promise<User[]> {
-    return await this.usersService.index(paginationQuery);
+  async index(
+    @Query() paginationQuery: PaginationQueryDto,
+  ): Promise<IUserResponse[]> {
+    return await firstValueFrom(
+      this.userServiceClient.send('user_index', paginationQuery),
+    );
   }
 
   @Get(':id')
@@ -41,7 +46,7 @@ export class UsersController {
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 404, description: 'User not found.' })
   async show(@Param('id') id: string): Promise<User> {
-    return await this.usersService.show(id);
+    return await firstValueFrom(this.userServiceClient.send('user_show', id));
   }
 
   @Put(':id')
@@ -55,7 +60,12 @@ export class UsersController {
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
   ): Promise<User> {
-    return await this.usersService.update(id, updateUserDto);
+    return await firstValueFrom(
+      this.userServiceClient.send('user_update', {
+        id,
+        updateUserDto,
+      }),
+    );
   }
 
   @ApiResponse({
@@ -67,6 +77,8 @@ export class UsersController {
   @Delete(':id')
   @HttpCode(204)
   async destroy(@Param('id') id: string): Promise<void> {
-    await this.usersService.destroy(id);
+    return await firstValueFrom(
+      this.userServiceClient.send('user_destroy', id),
+    );
   }
 }
