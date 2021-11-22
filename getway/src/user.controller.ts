@@ -12,10 +12,10 @@ import {
 import { firstValueFrom } from 'rxjs';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
-import { IUserResponse } from './interfaces/user-response.interface';
+import { PaginationQueryDto } from './common/dto/pagination-query.dto';
+import { UpdateUserDto } from './interfaces/user/dto/update-user.dto';
+import { User } from './user/entities/user.entity';
+import { IUserResponse } from './interfaces/user/user-response.interface';
 
 @ApiTags('users')
 @Controller('users')
