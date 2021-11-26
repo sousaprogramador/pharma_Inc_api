@@ -67,6 +67,7 @@ Após executar o projeto o mesmo poderá ser visualizado através da URL:
 Onde `{PORT}` é o valor da porta configurada no arquivo `.env`, por padrão é a 3333.
 
 `http://localhost:{PORT}/docs`
+`http://127.0.0.1:15672/`
 
 &nbsp;
 

@@ -12,9 +12,8 @@ import {
 import { firstValueFrom } from 'rxjs';
 import { ClientProxy } from '@nestjs/microservices';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PaginationQueryDto } from './common/dto/pagination-query.dto';
+import { PaginationQueryDto } from './interfaces/common/dto/pagination-query.dto';
 import { UpdateUserDto } from './interfaces/user/dto/update-user.dto';
-import { User } from './user/entities/user.entity';
 import { IUserResponse } from './interfaces/user/user-response.interface';
 
 @ApiTags('users')
@@ -45,7 +44,7 @@ export class UserController {
   })
   @ApiResponse({ status: 401, description: 'Unauthorized.' })
   @ApiResponse({ status: 404, description: 'User not found.' })
-  async show(@Param('id') id: string): Promise<User> {
+  async show(@Param('id') id: string): Promise<IUserResponse> {
     return await firstValueFrom(this.userServiceClient.send('user_show', id));
   }
 
@@ -59,7 +58,7 @@ export class UserController {
   async update(
     @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
-  ): Promise<User> {
+  ): Promise<IUserResponse> {
     return await firstValueFrom(
       this.userServiceClient.send('user_update', {
         id,
